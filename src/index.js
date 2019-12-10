@@ -2,12 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
-import { createStore, compose } from "redux";
-import persistState from "redux-localstorage";
 import { Provider } from "react-redux";
 
-import initial from "./data/initial";
-import reducer from "./data/reducer";
 import store from "./data/store";
  
 let state = store.getState();
