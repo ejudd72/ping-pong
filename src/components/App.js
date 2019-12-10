@@ -25,7 +25,7 @@ const App = ({
             defaultLang={ defaultLang }
 
         />
-        <div className="row md-6" style={{ width: "100%", justifyContent: "space-evenly" }}>
+        <div className="row md-6" style={{padding: 15}}>
             <Player
                 style={{width: "50%"}}
                 number={ 1 }
