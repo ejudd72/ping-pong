@@ -1,0 +1,9 @@
+{
+    "esperanto" : {
+        "player": "Ludanto",
+        "serving": "Servas",
+        "reset" : "Restarigi",
+        "wins":  "Venkoj",
+        "history": "Historio"
+    }
+}
