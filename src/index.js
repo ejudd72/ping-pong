@@ -3,16 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import { createStore, compose } from "redux";
 import persistState from "redux-localstorage";
-import { esperanto } from "./esperanto";
-
-const initial = {
-    player1: 0,
-    player2: 0,
-    serve: 0,
-    winner: 0,
-    previous: [],
-    lang: true,
-};
+import initial from "./data/initial";
 
 const reducer = (state, action) => {
     
@@ -27,7 +18,6 @@ const reducer = (state, action) => {
 
     const winner = state => {
         if ((state.player1 >= 21 || state.player2 >= 21) && (Math.abs(state.player1 - state.player2) >= 2)) {
-            
             return {
                 ...state, 
                 winner: state.player1 > state.player2 ? 1 : 2,
@@ -64,7 +54,7 @@ const reducer = (state, action) => {
     }));
     case "reset": return { 
         ...initial, 
-        previous: [...state.previous, previous(state)] 
+        previous: [previous(state), ...state.previous] 
     };
     case "langToggle": return { 
         ...state, 
@@ -83,6 +73,7 @@ const store = createStore(
     composeEnhancers(persistState())
 );
 
+
 const render = () => {
     
     let state = store.getState();
@@ -99,7 +90,6 @@ const render = () => {
         winner={ state.winner }
         previous={ state.previous }
         defaultLang={ state.defaultLang }
-        esperanto={ esperanto }
     />,
     document.getElementById("root")
   ); };

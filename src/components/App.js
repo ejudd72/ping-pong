@@ -16,8 +16,7 @@ const App = ({
     serving, 
     winner, 
     previous, 
-    defaultLang, 
-    esperanto 
+    defaultLang
 }) => (
 
     <React.Fragment>
@@ -26,7 +25,7 @@ const App = ({
             defaultLang={ defaultLang }
 
         />
-        <div className="row md-6" style={{width: "100%", justifyContent: "space-evenly" }}>
+        <div className="row md-6" style={{ width: "100%", justifyContent: "space-evenly" }}>
             <Player
                 style={{width: "50%"}}
                 number={ 1 }
@@ -35,7 +34,6 @@ const App = ({
                 serving={ serving }
                 winner={ winner }
                 defaultLang={ defaultLang }
-                esperanto={ esperanto }
             />
 
             <Player
@@ -44,21 +42,18 @@ const App = ({
                 handleIncrement={ handleIncrementP2 } 
                 serving={ serving }
                 winner={ winner }
-
                 defaultLang={ defaultLang }
             />
             </div>
-
+            <hr/>
             <Result
                 handleReset={ handleReset }
                 player1={ player1 }
                 player2={ player2 }
                 winner={ winner }
                 previous={ previous }
-                esperanto={ esperanto }
                 defaultLang={ defaultLang }
             />
-
 
     </React.Fragment>
 );
