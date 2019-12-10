@@ -5,6 +5,7 @@ const initial = {
     winner: 0,
     previous: [],
     lang: true,
+    value: 78
 };
 
 export default initial;

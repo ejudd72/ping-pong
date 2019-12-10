@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { esperanto, english } from "../languages";
+import { esperanto, english } from "../../languages";
 
 const Result = ({ winner, handleReset, previous, defaultLang }) => (
     <>
