@@ -2,7 +2,8 @@ import React from "react";
 import Player from "./Player";
 import Header from "./Header"
 import Result from "./Result";
-import esperanto from "../esperanto";
+import { Provider } from "react-redux";
+
 
 // import PrevGames from "./PrevGames";
 
