@@ -27,15 +27,19 @@ const reducer = (state, action) => {
 
     const previous = state => { 
       return  {
-            "player_1": {
-              "score": state.player1,
-              "won": state.winner === 1
-            },
-            "player_2": {
-              "score": state.player2,
-              "won": state.winner === 2,
+        ...state,
+        previous: 
+            {
+                "player_1": {
+                "score": state.player1,
+                "won": state.winner === 1
+                },
+                "player_2": {
+                "score": state.player2,
+                "won": state.winner === 2,
+                }
             }
-          }
+        }
     }
  
    switch (action.type) {
@@ -49,7 +53,8 @@ const reducer = (state, action) => {
     }));
     case "reset": return { 
         ...initial, 
-        previous: [previous(state), ...state.previous] 
+        defaultLang: state.defaultLang,
+        previous: [previous(state).previous, ...state.previous] 
     };
     case "langToggle": return { 
         ...state, 
