@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Player from "./Player";
 import { incrementP1 } from "../../data/actions"
+import { english, esperanto } from "../../data/languages"
 
 const mapStateToProps = state => {
   return {
@@ -8,7 +9,7 @@ const mapStateToProps = state => {
     number: 1,
     serving: state.serve,
     winner: state.winner,
-    defaultLang: state.defaultLang,
+    defaultLang: state.defaultLang ? english : esperanto,
     playerName: state.player1Name,
     gameStarted: state.gameStarted
   };

@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
 import Header from "./Header";
 import { langToggle } from "../../data/actions"
+import { english, esperanto } from "../../data/languages"
 
 
 const mapStateToProps = state => {
   return {
-    defaultLang: state.defaultLang
+    defaultLang: state.defaultLang ? english : esperanto,
   };
 };
 

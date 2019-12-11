@@ -6,7 +6,8 @@
         "history": "Historio",
         "name": "Nomo",
         "winningScore": "Gajnanta poentaron",
-        "alternateEvery": "Alterne ĉiun"
+        "alternateEvery": "Alterne ĉiun",
+        "pingPong": "PingPong"
     },
     "english" : {
         "player": "Player",
@@ -15,6 +16,7 @@
         "history": "History",
         "name": "Name",
         "winningScore": "Winning score",
-        "alternateEvery": "Alternate every"
+        "alternateEvery": "Alternate every",
+        "pingPong": "PongPing"
     }
 }
