@@ -1,5 +1,7 @@
 import { connect } from "react-redux";
 import Header from "./Header";
+import { langToggle } from "../../data/actions"
+
 
 const mapStateToProps = state => {
   return {
@@ -9,7 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleClick: () => dispatch({ type: "langToggle" }),
+    handleClick: () => dispatch(langToggle()),
   }; 
 };
 

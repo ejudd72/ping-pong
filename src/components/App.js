@@ -4,11 +4,12 @@ import Player2 from "./Player/Player2";
 
 import Header from "./Header"
 import Result from "./Result";
+import GameStart from "./GameStart";
 
 const App = () => (
     <>
-        <Header
-        />
+        <Header />
+        <GameStart/>
         <div className="row md-6" style={{ padding: 15 }}>
             <Player1/>
             <Player2/>

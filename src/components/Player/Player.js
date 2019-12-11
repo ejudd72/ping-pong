@@ -1,12 +1,15 @@
 import React from "react";
 import { esperanto, english } from "../../data/languages"
 
-const Player = ({ score, handleIncrement, serving, number, winner, defaultLang }) => (
+const Player = ({ score, handleIncrement, serving, number, winner, defaultLang, playerName, gameStarted }) => (
+    gameStarted ? (
     <div 
         className={"col-md-6 mt-4 card text-center " + (serving === number ? "bg-dark text-white" : null )}
     >
         <h5 className="card-header">
-            { (defaultLang ? english.player : esperanto.player) + `  ${number}` }
+            { playerName !== "" ? playerName : 
+                ((defaultLang ? english.player :
+                   esperanto.player) + `  ${number}` )}
         </h5>
         <div className="card-body">
             <p className="card-text display-1">{ score }</p>
@@ -21,6 +24,7 @@ const Player = ({ score, handleIncrement, serving, number, winner, defaultLang }
             </div> 
         }
     </div>
+    ) : null
 );
 
 export default Player;

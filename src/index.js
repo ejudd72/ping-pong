@@ -8,12 +8,7 @@ import store from "./data/store";
 
 ReactDOM.render(
   <Provider store={ store }>
-    <App 
-      // handleIncrementP1={  () => store.dispatch({ type: "incrementP1" }) }
-      handleIncrementP2={  () => store.dispatch({ type: "incrementP2" }) }
-      handleReset={  () => store.dispatch({ type: "reset" }) }
-      // handleClick={ }
-    />,
+    <App/>,
   </Provider>,
 document.getElementById("root")
 ); 

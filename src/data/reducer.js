@@ -1,9 +1,18 @@
 import initial from "./initial";
 
+const saveSettings = (state, action) => ({ 
+    ...state, 
+    player1Name: action.player1Name,
+    player2Name: action.player2Name,
+    alternate: action.alternate,
+    winScore: action.winScore,
+    gameStarted: true,
+ });
+
 const reducer = (state, action) => {
     
     const serving = state => {
-        let alt = state.player1 < 21 || state.player2 < 21 ? 5 : 2;
+        let alt = state.player1 < 21 || state.player2 < 21 ? state.alternate : 2;
 
         return {
             ...state, 
@@ -12,7 +21,7 @@ const reducer = (state, action) => {
     }
 
     const winner = state => {
-        if ((state.player1 >= 21 || state.player2 >= 21) && (Math.abs(state.player1 - state.player2) >= 2)) {
+        if ((state.player1 >= state.winScore || state.player2 >= state.winScore) && (Math.abs(state.player1 - state.player2) >= 2)) {
             return {
                 ...state, 
                 winner: state.player1 > state.player2 ? 1 : 2,
@@ -54,12 +63,14 @@ const reducer = (state, action) => {
     case "reset": return { 
         ...initial, 
         defaultLang: state.defaultLang,
+        gameStarted: false,
         previous: [previous(state).previous, ...state.previous] 
     };
     case "langToggle": return { 
         ...state, 
         defaultLang: !state.defaultLang, 
     };
+    case "saveSettings": return saveSettings(state, action);
 
     default: return state;
  } };

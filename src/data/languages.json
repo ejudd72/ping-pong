@@ -3,12 +3,18 @@
         "player": "Ludanto",
         "reset" : "Restarigi",
         "wins":  "Venkoj",
-        "history": "Historio"
+        "history": "Historio",
+        "name": "Nomo",
+        "winningScore": "Gajnanta poentaron",
+        "alternateEvery": "Alterne ĉiun"
     },
     "english" : {
         "player": "Player",
         "reset" : "Reset",
         "wins":  "Wins",
-        "history": "History"
+        "history": "History",
+        "name": "Name",
+        "winningScore": "Winning score",
+        "alternateEvery": "Alternate every"
     }
 }
