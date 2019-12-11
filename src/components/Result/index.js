@@ -10,5 +10,11 @@ const mapStateToProps = state => {
     defaultLang: state.defaultLang
   };
 };
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleReset: () => dispatch({ type: "reset" }),
+  }; 
+};
   
-export default connect(mapStateToProps)(Result);
+export default connect(mapStateToProps, mapDispatchToProps)(Result);

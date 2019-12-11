@@ -27,8 +27,8 @@ const Result = ({ winner, handleReset, previous, defaultLang }) => (
                 { previous.map((current, index) =>  (
                 
                     <tr key={index}>
-                        <td style={{textAlign: "center", backgroundColor: current.player_1.won ? "lightgreen" : "indianred" }} >{ current.player_1.score }</td>
-                        <td style={{textAlign: "center", backgroundColor: current.player_2.won ? "lightgreen" : "indianred" }} >{ current.player_2.score  }</td>
+                        <td style={{ backgroundColor: current.player_1.won ? "lightgreen" : "indianred" }} >{ current.player_1.score }</td>
+                        <td style={{ backgroundColor: current.player_2.won ? "lightgreen" : "indianred" }} >{ current.player_2.score  }</td>
                     </tr>
                 ))}
                 </tbody>

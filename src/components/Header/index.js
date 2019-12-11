@@ -6,5 +6,12 @@ const mapStateToProps = state => {
     defaultLang: state.defaultLang
   };
 };
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleClick: () => dispatch({ type: "langToggle" }),
+  }; 
+};
+
   
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

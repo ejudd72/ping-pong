@@ -5,33 +5,17 @@ import Player2 from "./Player/Player2";
 import Header from "./Header"
 import Result from "./Result";
 
-const App = ({ 
-    handleIncrementP1, 
-    handleIncrementP2, 
-    handleReset, 
-    handleClick, 
-    defaultLang,
-}) => (
-
-    <React.Fragment>
+const App = () => (
+    <>
         <Header
-            handleClick={ handleClick }
-            defaultLang={ defaultLang }
         />
-        <div className="row md-6" style={{padding: 15}}>
-            <Player1
-                handleIncrement={ handleIncrementP1 } 
-            />
-            <Player2
-                handleIncrement={ handleIncrementP2 } 
-            />
-            </div>
-            <hr/>
-            <Result
-                handleReset={ handleReset }
-            />
-
-    </React.Fragment>
+        <div className="row md-6" style={{ padding: 15 }}>
+            <Player1/>
+            <Player2/>
+        </div>
+        <hr/>
+        <Result/>
+    </>
 );
 
 export default App;

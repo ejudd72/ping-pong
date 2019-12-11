@@ -10,5 +10,11 @@ const mapStateToProps = state => {
     defaultLang: state.defaultLang
   };
 };
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleIncrement: () => dispatch({ type: "incrementP2" }),
+  }; 
+};
   
-export default connect(mapStateToProps)(Player);
+export default connect(mapStateToProps, mapDispatchToProps)(Player);
