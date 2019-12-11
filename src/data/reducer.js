@@ -1,11 +1,11 @@
 import initial from "./initial";
 
-const saveSettings = (state, action) => ({ 
+const saveSettings = (state, { player1Name, player2Name, alternate, winScore }) => ({ 
     ...state, 
-    player1Name: action.player1Name,
-    player2Name: action.player2Name,
-    alternate: action.alternate,
-    winScore: action.winScore,
+    player1Name,
+    player2Name,
+    alternate,
+    winScore,
     gameStarted: true,
  });
 
@@ -64,6 +64,8 @@ const reducer = (state, action) => {
         ...initial, 
         defaultLang: state.defaultLang,
         gameStarted: false,
+        player1Name: state.player1Name,
+        player2Name: state.player2Name,
         previous: [previous(state).previous, ...state.previous] 
     };
     case "langToggle": return { 

@@ -22,23 +22,12 @@ export const langToggle = () => {
     }
 }
 
-export const saveSettings = (settings) => {
+export const saveSettings = ({ player1Name, player2Name, alternate, winScore }) => {
     return { 
         type: "saveSettings",
-        player1Name: settings.player1Name,
-        player2Name: settings.player2Name, 
-        alternate: settings.alternate,
-        winScore: settings.winScore,
+        player1Name,
+        player2Name, 
+        alternate,
+        winScore,
     }
 };
-
-
-// export const saveSettings = ({ settings }) => {
-//     return {
-//       type: "saveSettings",
-//       player1Name: settings[0],
-//       player2Name: settings[1], 
-//       alternate: settings[2],
-//       winScore: settings[4],
-//       gameStarted: settings[5]
-//     }; };

@@ -3,16 +3,15 @@ import Player from "./Player";
 import { incrementP2 } from "../../data/actions"
 import { english, esperanto } from "../../data/languages"
 
-
-const mapStateToProps = state => {
+const mapStateToProps = ({ player2, serve, winner, player2Name, gameStarted, defaultLang }) => {
   return {
-    score: state.player2,
+    score: player2,
     number: 2,
-    serving: state.serve,
-    winner: state.winner,
-    defaultLang: state.defaultLang ? english : esperanto,
-    playerName: state.player2Name,
-    gameStarted: state.gameStarted
+    serving: serve,
+    winner,
+    defaultLang: defaultLang ? english : esperanto,
+    playerName: player2Name,
+    gameStarted,
   };
 };
 
