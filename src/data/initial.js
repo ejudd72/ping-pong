@@ -9,7 +9,8 @@ const initial = {
     defaultLang: true,
     winScore: 21,
     alternate: 5,
-    gameStarted: false
+    gameStarted: false,
+    gameId: 1,
 };
 
 export default initial;

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Player from "./Player";
-import { incrementP2 } from "../../data/actions"
+import { patchIncrementPlayer } from "../../data/actions/api"
 import { english, esperanto } from "../../data/languages"
 
 const mapStateToProps = ({ player2, serve, winner, player2Name, gameStarted, defaultLang }) => {
@@ -17,8 +17,8 @@ const mapStateToProps = ({ player2, serve, winner, player2Name, gameStarted, def
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleIncrement: () => dispatch(incrementP2()),
-  }; 
+    handleIncrement: () => dispatch(patchIncrementPlayer(2)),
+  };
 };
   
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

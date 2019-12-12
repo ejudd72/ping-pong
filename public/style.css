@@ -1,5 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy|Roboto&display=swap'); */
 
+@import url('https://fonts.googleapis.com/css?family=Lilita+One&display=swap');
+
 body {
     /* font-family: 'Roboto', sans-serif; */
 }
@@ -11,22 +13,26 @@ body {
     background-blend-mode: lighten;
     margin-top: 20px;
     text-align: center;
+
 }
 
 .jumbotron h1 {
-    /* font-family: 'Luckiest Guy', cursive; */
+    font-family: 'Lilita One', cursive;
     font-size: 6rem;
     color: white;
 }
 
 .jumbotron button {
-    margin: 0 10px;
+    position: relative;
+    bottom: 20px;
+    left: 100px;
 }
 .container {
     background: url('table-tennis.jpg'), no-repeat;
     background-color:darkgrey;
     background-blend-mode: darken;
     background-attachment: fixed;
+    background-position: center;
     background-size: cover 100vh;   
     padding: 20px;
 }
@@ -38,6 +44,10 @@ body {
 td {
     text-align: center;
 }
-input {
-    display: block;
+.input-group > .form-control {
+    width: 100%;
+}
+
+.form > button {
+    width: 10%;
 }

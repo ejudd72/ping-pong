@@ -1,12 +1,19 @@
 import initial from "./initial";
 
-const saveSettings = (state, { player1Name, player2Name, alternate, winScore }) => ({ 
+const increment = (state, { player1, player2 }) => ({
+    ...state, 
+    player1: player1,
+    player2: player2
+})
+
+const saveSettings = (state, { player1Name, player2Name, alternate, winScore, gameId }) => ({ 
     ...state, 
     player1Name,
     player2Name,
     alternate,
     winScore,
     gameStarted: true,
+    gameId,
  });
 
 const reducer = (state, action) => {
@@ -41,33 +48,33 @@ const reducer = (state, action) => {
             {
                 "player_1": {
                 "score": state.player1,
-                "won": state.winner === 1
+                "won": state.winner === 1,
+                "game_id": state.gameId,
                 },
                 "player_2": {
                 "score": state.player2,
                 "won": state.winner === 2,
+                "game_id": state.gameId,
                 }
             }
         }
     }
+
+    const reset = state => {
+        return { 
+            ...initial, 
+            defaultLang: state.defaultLang,
+            gameStarted: false,
+            player1Name: state.player1Name,
+            player2Name: state.player2Name,
+            previous: [previous(state).previous, ...state.previous],
+            gameId: state.gameId + 1, 
+        }
+    }
  
    switch (action.type) {
-    case "incrementP1": return winner(serving({ 
-        ...state, 
-        player1: state.player1 + 1, 
-    })); 
-    case "incrementP2": return winner(serving({ 
-        ...state, 
-        player2: state.player2 + 1, 
-    }));
-    case "reset": return { 
-        ...initial, 
-        defaultLang: state.defaultLang,
-        gameStarted: false,
-        player1Name: state.player1Name,
-        player2Name: state.player2Name,
-        previous: [previous(state).previous, ...state.previous] 
-    };
+    case "incrementPlayer": return winner(serving(increment(state, action))); 
+    case "reset": return reset(state);
     case "langToggle": return { 
         ...state, 
         defaultLang: !state.defaultLang, 

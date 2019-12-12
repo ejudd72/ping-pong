@@ -1,5 +1,4 @@
 import React from "react";
-import { esperanto, english } from "../../data/languages"
 
 const Player = ({ score, handleIncrement, serving, number, winner, defaultLang, playerName, gameStarted }) => (
     gameStarted ? (

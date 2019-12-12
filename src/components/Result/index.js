@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Result from "./Result";
-import { reset } from "../../data/actions"
+import { reset } from "../../data/actions/state"
 import { english, esperanto } from "../../data/languages"
 
 const mapStateToProps = state => {

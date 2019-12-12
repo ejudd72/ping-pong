@@ -46,10 +46,7 @@ class GameStart extends Component {
     }
 
     handleSubmit(e){
-       
-
         e.preventDefault();
-        
         this.props.handleSave({...this.state});
     }
 
