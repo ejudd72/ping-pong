@@ -11,7 +11,8 @@ const mapStateToProps = state => {
         winScore: state.winScore,
         player1Name: state.player1Name,
         player2Name: state.player2Name,
-        gameStarted: state.gameStarted
+        gameStarted: state.gameStarted,
+        defaultLang: state.defaultLang,
     };
 };
 

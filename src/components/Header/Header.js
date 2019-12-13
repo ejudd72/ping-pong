@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Table } from "react-bootstrap";
 import { english, esperanto } from "../../data/languages";
-import { Link, Router } from "react-router-dom"
 
 const Header = ({ handleClick, defaultLang, handleCheckUnfinished, checkedUnfinished, unfinished, handleChooseGame }) => (
     <header className="jumbotron mt-4 mb-0">
