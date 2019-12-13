@@ -11,6 +11,9 @@ const initial = {
     alternate: 5,
     gameStarted: false,
     gameId: 1,
+    loaded: false,
+    unfinished: [],
+    checkedUnfinished: false,
 };
 
 export default initial;

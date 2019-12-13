@@ -1,84 +1,80 @@
 import initial from "./initial";
 
-const increment = (state, { player1, player2 }) => ({
-    ...state, 
-    player1: player1,
-    player2: player2
-})
-
-const saveSettings = (state, { player1Name, player2Name, alternate, winScore, gameId }) => ({ 
-    ...state, 
-    player1Name,
-    player2Name,
-    alternate,
-    winScore,
-    gameStarted: true,
-    gameId,
- });
-
 const reducer = (state, action) => {
-    
-    const serving = state => {
-        let alt = state.player1 < 21 || state.player2 < 21 ? state.alternate : 2;
 
-        return {
-            ...state, 
-            serve: Math.floor((state.player1 + state.player2 + 1) / alt) % 2 + 1
-        }
-    }
-
-    const winner = state => {
-        if ((state.player1 >= state.winScore || state.player2 >= state.winScore) && (Math.abs(state.player1 - state.player2) >= 2)) {
-            return {
-                ...state, 
-                winner: state.player1 > state.player2 ? 1 : 2,
-            }
-        } else {
-            return {
-                ...state,
-                winner: 0,
-            }
-        }
-    }
-
-    const previous = state => { 
-      return  {
+    const loadedUnfinished = (state, { unfinished }) => ({
         ...state,
-        previous: 
-            {
-                "player_1": {
-                "score": state.player1,
-                "won": state.winner === 1,
-                "game_id": state.gameId,
-                },
-                "player_2": {
-                "score": state.player2,
-                "won": state.winner === 2,
-                "game_id": state.gameId,
-                }
-            }
-        }
-    }
+        unfinished: unfinished,
+        loaded: true,
+        checkedUnfinished: !state.checkedUnfinished,
+    })
+    
+    const chooseGame = (state, { gameId, player1, player2, player1Name, player2Name, winScore, alternate, serve }) => ({
+        ...state,
+        gameId,
+        player1Name,
+        player1,
+        player2,
+        player2Name,
+        winScore, 
+        alternate,
+        serve,
+        checkedUnfinished: false,
+        gameStarted: true,
+    })
+        
+    const deleted = state => ({
+        ...state,
+    })
 
-    const reset = state => {
-        return { 
-            ...initial, 
-            defaultLang: state.defaultLang,
-            gameStarted: false,
-            player1Name: state.player1Name,
-            player2Name: state.player2Name,
-            previous: [previous(state).previous, ...state.previous],
-            gameId: state.gameId + 1, 
-        }
-    }
- 
-   switch (action.type) {
-    case "incrementPlayer": return winner(serving(increment(state, action))); 
-    case "reset": return reset(state);
-    case "langToggle": return { 
+    const increment = (state, { player1, player2, serve, winner }) => ({
+        ...state, 
+        player1,
+        player2,
+        serve,
+        winner,
+    })
+
+    const saveSettings = (state, { player1Name, player2Name, alternate, winScore, gameId }) => ({ 
+        ...state, 
+        player1Name,
+        player2Name,
+        alternate,
+        winScore,
+        gameStarted: true,
+        gameId,
+    });
+
+    const loaded = (state, { previous }) => ({
+        ...state,
+        previous: previous,
+        loaded: true
+    })
+
+    const langToggle = state => ({ 
         ...state, 
         defaultLang: !state.defaultLang, 
-    };
+    }) 
+
+    const reset = ({ defaultLang, player1Name, loaded, player2Name, previous }) => ({
+        ...initial, 
+        loaded,
+        defaultLang,
+        gameStarted: false,
+        player1Name,
+        player2Name,
+        previous,
+        gameId: 0
+    })
+ 
+   switch (action.type) {
+    case "incrementPlayer": return increment(state, action);
+    case "reset": return reset(state);
+    case "deleted": return deleted(state);
+    case "loaded": return loaded(state, action);
+    case "loadedUnfinished": return loadedUnfinished(state, action);
+    case "chooseGame": return chooseGame(state, action);
+    case "langToggle": return langToggle(state, action);
     case "saveSettings": return saveSettings(state, action);
 
     default: return state;

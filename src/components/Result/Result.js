@@ -1,7 +1,7 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 
-const Result = ({ winner, handleReset, previous, defaultLang, player1Name, player2Name }) => (
+const Result = ({ winner, handleReset, previous, defaultLang, player1Name, player2Name, handleDelete, handleLoad }) => (
     <>
         { winner > 0 ? 
         <h2 className="alert alert-success">
@@ -13,8 +13,11 @@ const Result = ({ winner, handleReset, previous, defaultLang, player1Name, playe
         : null } 
 
         <hr/>
-
+        
         <button className="btn btn-danger" onClick={ handleReset }>{ defaultLang.reset }</button>
+
+        <button className="btn btn-primary" onClick={ handleLoad }> Reload History</button>
+
 
         <hr/>
         <div className="card">
@@ -23,19 +26,33 @@ const Result = ({ winner, handleReset, previous, defaultLang, player1Name, playe
             <Table striped bordered hover style={{magin: 10}}>
                 <thead>
                     <tr>
-                        <th style={{textAlign: "center"}}>Game ID</th>
                         <th style={{textAlign: "center"}}>{ player1Name !== "" ? player1Name : `${defaultLang.player} 1`}</th>
                         <th style={{textAlign: "center"}}>{ player2Name !== "" ? player2Name : `${defaultLang.player} 2`}</th>
                     </tr>
                 </thead>
                 <tbody>
                 { previous.map((current, index) =>  (
-                
-                    <tr key={index}>
-                        <td>{ current.player_1.game_id }</td>
-                        <td style={{ backgroundColor: current.player_1.won ? "lightgreen" : "indianred" }} >{ current.player_1.score }</td>
-                        <td style={{ backgroundColor: current.player_2.won ? "lightgreen" : "indianred" }} >{ current.player_2.score  }</td>
+                <>
+                    <tr style={{backgroundColor: "black", color: "white"}} key={index}>
+                        
+                        <td>{ current.player1Name }</td>
+                        <td>{ current.player2Name }</td>
+                        <td>Delete game</td>
                     </tr>
+                    <tr key={ current.id }>
+                      
+                        <td style={{ backgroundColor: current.winner === 1 ? "lightgreen" : "indianred" }} >{ current.player1 }</td>
+                        <td style={{ backgroundColor: current.winner === 2 ? "lightgreen" : "indianred" }} >{ current.player2 }</td>
+                        <td>
+                            <img 
+                                id={ current.id }
+                                src="./delete.svg" 
+                                alt="delete icon"
+                                onClick={() => handleDelete(current.gameId)}
+                            />
+                        </td>
+                    </tr>
+                    </>
                 ))}
                 </tbody>
         </Table>

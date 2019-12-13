@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 import Result from "./Result";
 import { reset } from "../../data/actions/state"
+import { deleteGame, getPrevGames } from "../../data/actions/api"
+
 import { english, esperanto } from "../../data/languages"
 
 const mapStateToProps = state => {
@@ -18,6 +20,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     handleReset: () => dispatch(reset()),
+    handleDelete: (gameId) => dispatch(deleteGame(gameId)),
+    handleLoad: () => dispatch(getPrevGames()),
   }; 
 };
   
