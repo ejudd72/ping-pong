@@ -6,7 +6,6 @@ import Result from "./Result";
 import GameStart from "./GameStart";
 import Loading from "./Loading";
 
-
 const App = () => (
     <>
         <Header />

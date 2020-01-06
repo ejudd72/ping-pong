@@ -12,7 +12,6 @@ const mapStateToProps = state => {
         player1Name: state.player1Name,
         player2Name: state.player2Name,
         gameStarted: state.gameStarted,
-        defaultLang: state.defaultLang,
     };
 };
 
