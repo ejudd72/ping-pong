@@ -7,5 +7,3 @@ In the terminal,
 - npm install
 - npm start
 
-Alternately, this repo is hosted on github pages: 
-https://ejudd72.github.io/ping-pong/
